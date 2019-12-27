@@ -1,0 +1,62 @@
+body {
+  background-color: black;
+  box-sizing: border-box;
+  color: white;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-top: 6px solid white;
+  border-left: 6px solid white;
+}
+
+.container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 0;
+  right: 0;
+  border-bottom: 6px solid white;
+  border-right: 6px solid white;
+}
+
+.clock {
+  width: 90%;
+  height: 90%;
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(6, 1fr);
+}
+
+.letter {
+  font-size: 3rem;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hour {
+  color: white;
+}
+.minute {
+  color: white;
+}
