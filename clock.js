@@ -15,7 +15,7 @@ const tens_length = parseInt(tens_minutes.length, 10);
 
 const reset = time => {
   time.forEach(element => {
-    element.style.color = "grey";
+    element.style.color = "hsla(0,0%,100%,.3)";
   });
 };
 
@@ -83,22 +83,22 @@ const getTime = () => {
   }
   if (CURRENT_MINUTE === 0) {
     reset(hours);
-    minute.style.color = "gray";
+    minute.style.color = "hsla(0,0%,100%,.3)";
   } else {
     minute.style.color = "white";
   }
   if (CURRENT_HOUR === 0 && CURRENT_MINUTE === 0) {
     twelve.style.color = "white";
     midnight.style.color = "white";
-    hour.style.color = "gray";
+    hour.style.color = "hsla(0,0%,100%,.3)";
   } else if (CURRENT_HOUR === 12 && CURRENT_MINUTE === 0) {
     twelve.style.color = "white";
     noon.style.color = "white";
-    hour.style.color = "gray";
+    hour.style.color = "hsla(0,0%,100%,.3)";
   } else {
-    twelve.style.color = "gray";
-    midnight.style.color = "gray";
-    noon.style.color = "gray";
+    twelve.style.color = "hsla(0,0%,100%,.3)";
+    midnight.style.color = "hsla(0,0%,100%,.3)";
+    noon.style.color = "hsla(0,0%,100%,.3)";
     hour.style.color = "white";
 
     displayHour(CURRENT_HOUR % 12);
