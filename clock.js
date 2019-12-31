@@ -15,42 +15,42 @@ const tens_length = parseInt(tens_minutes.length, 10);
 
 const reset = time => {
   time.forEach(element => {
-    element.style.color = "hsla(0,0%,100%,.3)";
+    element.classList.remove("on");
   });
 };
 
 const displayHour = hours_now => {
   //1,2,3,4 (0~3) 4
   if (hours_now > 0 && hours_now < 4) {
-    hours[hours_now - 1].style.color = "white";
+    hours[hours_now - 1].classList.add("on");
   } else if (hours_now > 3 && hours_now < 7) {
     //5,6 (4~7) 4
     if (hours_now === 5) {
-      hours[4].style.color = "white";
-      hours[5].style.color = "white";
+      hours[4].classList.add("on");
+      hours[5].classList.add("on");
     } else {
-      hours[6].style.color = "white";
-      hours[7].style.color = "white";
+      hours[6].classList.add("on");
+      hours[7].classList.add("on");
     }
   } else if (hours_now > 6 && hours_now < 10) {
     //7,8,9 (8~13) 6
     if (hours_now === 7) {
-      hours[8].style.color = "white";
-      hours[9].style.color = "white";
+      hours[8].classList.add("on");
+      hours[9].classList.add("on");
     } else if (hours_now === 8) {
-      hours[10].style.color = "white";
-      hours[11].style.color = "white";
+      hours[10].classList.add("on");
+      hours[11].classList.add("on");
     } else {
-      hours[12].style.color = "white";
-      hours[13].style.color = "white";
+      hours[12].classList.add("on");
+      hours[13].classList.add("on");
     }
   } else if (hours_now >= 10 || hours_now === 0) {
     //10, 11, 12 (14~16) 3
-    hours[14].style.color = "white";
+    hours[14].classList.add("on");
     if (hours_now === 0) {
-      hours[16].style.color = "white";
+      hours[16].classList.add("on");
     } else {
-      hours[hours_now + 4].style.color = "white";
+      hours[hours_now + 4].classList.add("on");
     }
   }
 };
@@ -58,12 +58,12 @@ const displayHour = hours_now => {
 const displayMinute = (tens, unit) => {
   if (tens !== null) {
     if (tens > 1) {
-      tens_minutes[tens - 2].style.color = "white";
+      tens_minutes[tens - 2].classList.add("on");
     }
-    tens_minutes[tens_length - 1].style.color = "white";
+    tens_minutes[tens_length - 1].classList.add("on");
   }
   if (unit !== 0) {
-    unit_minutes[unit - 1].style.color = "white";
+    unit_minutes[unit - 1].classList.add("on");
   }
 };
 
@@ -72,6 +72,7 @@ const getTime = () => {
 
   const CURRENT_HOUR = CURRENT_TIME.getHours();
   const CURRENT_MINUTE = CURRENT_TIME.getMinutes();
+
   const CURRENT_SECOND = CURRENT_TIME.getSeconds();
 
   const tens = CURRENT_MINUTE >= 10 ? parseInt(CURRENT_MINUTE / 10, 10) : null;
@@ -83,23 +84,23 @@ const getTime = () => {
   }
   if (CURRENT_MINUTE === 0) {
     reset(hours);
-    minute.style.color = "hsla(0,0%,100%,.3)";
+    minute.classList.remove("on");
   } else {
-    minute.style.color = "white";
+    minute.classList.add("on");
   }
   if (CURRENT_HOUR === 0 && CURRENT_MINUTE === 0) {
-    twelve.style.color = "white";
-    midnight.style.color = "white";
-    hour.style.color = "hsla(0,0%,100%,.3)";
+    twelve.classList.add("on");
+    midnight.classList.add("on");
+    hour.classList.remove("on");
   } else if (CURRENT_HOUR === 12 && CURRENT_MINUTE === 0) {
-    twelve.style.color = "white";
-    noon.style.color = "white";
-    hour.style.color = "hsla(0,0%,100%,.3)";
+    twelve.classList.add("on");
+    noon.classList.add("on");
+    hour.classList.remove("on");
   } else {
-    twelve.style.color = "hsla(0,0%,100%,.3)";
-    midnight.style.color = "hsla(0,0%,100%,.3)";
-    noon.style.color = "hsla(0,0%,100%,.3)";
-    hour.style.color = "white";
+    twelve.classList.remove("on");
+    midnight.classList.remove("on");
+    noon.classList.remove("on");
+    hour.classList.add("on");
 
     displayHour(CURRENT_HOUR % 12);
     displayMinute(tens, unit);
